@@ -40,5 +40,9 @@ int main()
 			cin >> p[i][j];
 	
 	fun(r,c,p);
-}
 
+	for(i=0;i<c;i++)
+		delete p[i];
+	
+	delete p[i];
+}
