@@ -45,11 +45,15 @@ int main()
 	int n,del;
 	cout <<"Enter arr size : ";
 	cin >> n;
+	
 	cout <<"Enter ele to delete : ";
 	cin >> del;
+	
 	A obj(n);
+	
 	obj.set_data(n);
 	arrdel(obj,n,del);
+	
 	cout <<"after deletion : ";
 	obj.get_data(n);
 }
