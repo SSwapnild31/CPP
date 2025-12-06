@@ -1,4 +1,5 @@
 #include<iostream>
+
 using namespace std;
 
 void fun(int r,int c,int **p)
