@@ -6,7 +6,6 @@ void uniqueNumber(int a[],int n){
     for(int i=0;i<n;i++){
         res ^= a[i];
     }
-
     cout << res << endl;
 }
 
@@ -17,4 +16,5 @@ int main()
 
     uniqueNumber(a,n);
     return 0;
+
 }
