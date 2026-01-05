@@ -21,8 +21,8 @@ public:
 			i++;
 		}
 		ptr[i] = '\0';
-	}
-	
+	}	
+
 	String(const String &p){
 		ptr = new char[MAX];
 		
@@ -35,27 +35,110 @@ public:
 		ptr[i] = '\0';
 	}
 
-	void Strcpy(char *src,char *dest){
-		while(*dest++ = *src++);
+	~String(){
+		delete[] ptr;
 	}
-	
-	bool operator = (const String str1){
-		if(strlen(str1.ptr) != strlen(str2.ptr)){
+		
+	bool operator == (const String obj){
+		if(strlen(obj.ptr) != strlen(this->ptr)){
 			return false;
 		}
-		for(int i=0;str1.ptr[i]!='\0';i++){
-			if(str1.ptr[i] != str2.ptr[i]){
+		for(int i = 0; obj.ptr[i]!='\0'; i++){
+			if(obj.ptr[i] != this->ptr[i]){
 				return false;
 			}
 		}
 		return true;
 	}
 
-	~String(){
-		delete[] ptr;
+	String operator + (String obj){
+		String temp;
+		int i = 0;
+		while(this->ptr[i] != '\0'){
+			temp.ptr[i] = this->ptr[i];
+			i++;
+		}
+		int j = 0;
+		while(obj.ptr[j] != '\0'){
+			temp.ptr[i++] = obj.ptr[j++];
+		}
+		temp.ptr[i] = '\0';
+		
+		return temp;
 	}
+
+	String operator = (String obj){
+		String temp;
+		int i = 0;
+		while(obj.ptr[i] != '\0'){
+			temp.ptr[i] = obj.ptr[i];
+			i++;
+		}
+		return temp;
+	}
+	
+	//friend functions
+
+	friend int Strlen(const String&);
+	friend void Strcpy(const String&, String&);
+	friend String Strchr(const String&, char);
+	friend String Strstr(const String&, const String&);
 };
 
+int Strlen(const String &p){
+	int len = 0;
+	int i = 0;
+	while(p.ptr[i] != '\0'){
+		len++;
+		i++;
+	}
+	return len;
+}
+
+void Strcpy(const String &src,String &dest){
+	int i = 0;
+	while(src.ptr[i] != '\0'){
+		dest.ptr[i] = src.ptr[i];
+		i++;
+	}
+	dest.ptr[i] = '\0';
+}
+
+String Strchr(const String &p, char ch){
+	int i = 0;
+	while(p.ptr[i] != '\0'){
+		if(p.ptr[i] == ch){
+			return &p.ptr[i];
+		}
+		i++;
+	}
+	return nullptr;
+}
+
+String Strstr(const String &str,const String &sub){
+	
+	int m = strlen(str.ptr);
+	int n = strlen(sub.ptr);
+	
+	if(n > m){
+		return nullptr;
+	}
+	
+	int i = 0, j;
+	while(str.ptr[i] != '\0'){
+		if(str.ptr[i] == sub.ptr[0]){
+			for(j = 1; j < n; j++){
+				if(str.ptr[i+j] != sub.ptr[j]){
+					break;
+				}
+			}
+			if(sub.ptr[j] == '\0'){
+				return &str.ptr[i];
+			}
+		}
+	}
+	return nullptr;
+}
 
 int main()
 {
