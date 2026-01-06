@@ -76,14 +76,19 @@ public:
 		}
 		return temp;
 	}
-	
-	//friend functions
 
+	//friend functions
+	
 	friend int Strlen(const String&);
 	friend void Strcpy(const String&, String&);
 	friend String Strchr(const String&, char);
 	friend String Strstr(const String&, const String&);
+	friend void Strrev(String&);
 };
+
+void Strrev(String &obj){
+	
+}
 
 int Strlen(const String &p){
 	int len = 0;
