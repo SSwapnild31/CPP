@@ -84,7 +84,17 @@ public:
 	friend String Strchr(const String&, char);
 	friend String Strstr(const String&, const String&);
 	friend void Strrev(String&);
+	friend void Strupper(String&);
+	friend void Strlower(String&);
 };
+
+void Strlower(String &obj){
+
+}
+
+void Strupper(String &obj){
+
+}
 
 void Strrev(String &obj){
 	
