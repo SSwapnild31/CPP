@@ -93,7 +93,13 @@ void Strlower(String &obj){
 }
 
 void Strupper(String &obj){
-
+	int i = 0;
+	while(obj.ptr[i]='\0'){
+		if(obj.ptr[i]>='a' || obj.ptr[i]<='z'){
+			obj.ptr[i] -= 32; 
+		}
+		i++;
+	}
 }
 
 void Strrev(String &obj){
