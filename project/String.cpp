@@ -89,6 +89,13 @@ public:
 };
 
 void Strlower(String &obj){
+	int i = 0;
+	while(obj.ptr[i]='\0'){
+		if(obj.ptr[i]>='A' || obj.ptr[i]<='Z'){
+			obj.ptr[i] += 32; 
+		}
+		i++;
+	}
 
 }
 
