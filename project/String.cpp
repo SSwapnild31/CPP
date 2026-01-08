@@ -97,7 +97,16 @@ void Strupper(String &obj){
 }
 
 void Strrev(String &obj){
+	int j = strlen(obj.ptr)-1;
+	int i = 0 ;
 	
+	while(i<j){
+		char c = obj.ptr[i];
+		obj.ptr[i] = obj.ptr[j];
+		obj.ptr[j] = c;
+		i++;
+		j--;
+	}
 }
 
 int Strlen(const String &p){
