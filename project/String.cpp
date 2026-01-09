@@ -54,35 +54,37 @@ public:
 
 	String operator + (const String &obj) const {
 		String temp;
-		int i = 0;
-		while(this->ptr[i] != '\0'){
-			temp.ptr[i] = this->ptr[i];
-			i++;
-		}
-		int j = 0;
-		while(obj.ptr[j] != '\0'){
-			temp.ptr[i++] = obj.ptr[j++];
-		}
-		temp.ptr[i] = '\0';
+		delete[] temp.ptr;
+
+		int len1 = strlen(ptr);
+		int len2 = strlen(temp.ptr);
+
+		temp.ptr = new char[len1 + len2 + 1];
+		
+		strcpy(temp.ptr, ptr);
+		strcpy(temp.ptr, obj.ptr);
 		
 		return temp;
 	}
 	
-	String operator = (String &obj){
-		String temp;
-		int i = 0;
-		while(obj.ptr[i] != '\0'){
-			temp.ptr[i] = obj.ptr[i];
-			i++;
+	String& operator = (const String &obj){
+		if(this == &obj){
+			return *this;
 		}
-		return temp;
+
+		delete[] ptr;
+		ptr = new char[strlen(obj.ptr) + 1];
+		strcpy(ptr, obj.ptr);
+		return *this;
 	}
 	
 	char& operator [] (int i){
+		if(i < 0 || i >= strlen(ptr)){
+			throw out_of_range("Index out of range");
+		}
+
 		return ptr[i];
 	}
-	
-	
 	
 	//friend functions
 	
@@ -162,12 +164,10 @@ int Strlen(const String &p){
 }
 
 void Strcpy(const String &src,String &dest){
-	int i = 0;
-	while(src.ptr[i] != '\0'){
-		dest.ptr[i] = src.ptr[i];
-		i++;
-	}
-	dest.ptr[i] = '\0';
+
+	delete[] dest.ptr;
+	dest.ptr = new char[strlen(src.ptr) + 1];
+	strcpy(dest.ptr, src.ptr);
 }
 
 char* Strchr(const String &p, char ch){
