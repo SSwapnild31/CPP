@@ -1,18 +1,19 @@
 #include<iostream>
 #include<cstring>
 
-#define MAX 1024
-
 using namespace std;
 
 class String
 {
 	char *ptr;
 public:
-	String() { ptr = new char[MAX]; }
+	String() {
+		ptr = new char[1];
+		ptr[0] = '\0';
+	}
 
-	String(const char *p){
-		ptr = new char[MAX];
+	String(const char *p) {
+		ptr = new char[strlen(p)+1];
 		
 		int len = strlen(p);
 		int i = 0;
@@ -23,8 +24,8 @@ public:
 		ptr[i] = '\0';
 	}	
 
-	String(const String &p){
-		ptr = new char[MAX];
+	String(const String &p) {
+		ptr = new char[strlen(p.ptr)+1];
 		
 		int len = strlen(p.ptr);
 		int i = 0;
@@ -39,7 +40,7 @@ public:
 		delete[] ptr;
 	}
 		
-	bool operator == (const String obj){
+	bool operator == (const String &obj) const {
 		if(strlen(obj.ptr) != strlen(this->ptr)){
 			return false;
 		}
@@ -51,7 +52,7 @@ public:
 		return true;
 	}
 
-	String operator + (String obj){
+	String operator + (const String &obj) const {
 		String temp;
 		int i = 0;
 		while(this->ptr[i] != '\0'){
@@ -66,8 +67,8 @@ public:
 		
 		return temp;
 	}
-
-	String operator = (String obj){
+	
+	String operator = (String &obj){
 		String temp;
 		int i = 0;
 		while(obj.ptr[i] != '\0'){
@@ -76,13 +77,19 @@ public:
 		}
 		return temp;
 	}
-
+	
+	char& operator [] (int i){
+		return ptr[i];
+	}
+	
+	
+	
 	//friend functions
 	
 	friend int Strlen(const String&);
 	friend void Strcpy(const String&, String&);
-	friend String Strchr(const String&, char);
-	friend String Strstr(const String&, const String&);
+	friend char* Strchr(const String&, char);
+	friend char* Strstr(const String&, const String&);
 	friend void Strrev(String&);
 	friend void Strupper(String&);
 	friend void Strlower(String&);
@@ -90,8 +97,8 @@ public:
 
 void Strlower(String &obj){
 	int i = 0;
-	while(obj.ptr[i]='\0'){
-		if(obj.ptr[i]>='A' || obj.ptr[i]<='Z'){
+	while(obj.ptr[i]!='\0'){
+		if(obj.ptr[i]>='A' && obj.ptr[i]<='Z'){
 			obj.ptr[i] += 32; 
 		}
 		i++;
@@ -101,8 +108,8 @@ void Strlower(String &obj){
 
 void Strupper(String &obj){
 	int i = 0;
-	while(obj.ptr[i]='\0'){
-		if(obj.ptr[i]>='a' || obj.ptr[i]<='z'){
+	while(obj.ptr[i]!='\0'){
+		if(obj.ptr[i]>='a' && obj.ptr[i]<='z'){
 			obj.ptr[i] -= 32; 
 		}
 		i++;
@@ -141,7 +148,7 @@ void Strcpy(const String &src,String &dest){
 	dest.ptr[i] = '\0';
 }
 
-String Strchr(const String &p, char ch){
+char* Strchr(const String &p, char ch){
 	int i = 0;
 	while(p.ptr[i] != '\0'){
 		if(p.ptr[i] == ch){
@@ -152,7 +159,7 @@ String Strchr(const String &p, char ch){
 	return nullptr;
 }
 
-String Strstr(const String &str,const String &sub){
+char* Strstr(const String &str,const String &sub){
 	
 	int m = strlen(str.ptr);
 	int n = strlen(sub.ptr);
@@ -173,6 +180,7 @@ String Strstr(const String &str,const String &sub){
 				return &str.ptr[i];
 			}
 		}
+		i++;
 	}
 	return nullptr;
 }
