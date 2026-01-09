@@ -93,7 +93,15 @@ public:
 	friend void Strrev(String&);
 	friend void Strupper(String&);
 	friend void Strlower(String&);
+	friend istream& operator >>(istream&, String&);
+	friend ostream& operator <<(ostream&, const String&);
 };
+
+istream& operator >>(istream& in, String& s){
+	in.getline(s.ptr,strlen(s.ptr)+1);
+	return in;
+}
+
 
 void Strlower(String &obj){
 	int i = 0;
@@ -190,5 +198,7 @@ int main()
 	String s("Swapnil");
 	String s1(s);
 	
+	cin >> s;
+
 	return 0;
 }
