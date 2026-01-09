@@ -97,8 +97,22 @@ public:
 	friend ostream& operator <<(ostream&, const String&);
 };
 
+ostream& operator <<(ostream& out, const String& s){
+	if(s.ptr)
+		out << s.ptr;
+	return out;
+}
+
 istream& operator >>(istream& in, String& s){
-	in.getline(s.ptr,strlen(s.ptr)+1);
+	int size;
+	char buffer[1024];
+	in.getline(buffer, 1024);
+
+	delete[] s.ptr;
+	size = strlen(buffer);
+	s.ptr = new char[size+1];
+	strcpy(s.ptr, buffer);
+
 	return in;
 }
 
@@ -197,8 +211,8 @@ int main()
 {
 	String s("Swapnil");
 	String s1(s);
-	
+	cout << s <<" "<< s1 << endl;
 	cin >> s;
-
+	cout << s <<" "<< s1 << endl;
 	return 0;
 }
