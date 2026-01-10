@@ -98,6 +98,7 @@ public:
 	friend istream& operator >>(istream&, String&);
 	friend ostream& operator <<(ostream&, const String&);
 	friend void Strcat(String&, String&);
+	friend void Strncat(String&, String&, int);
 };
 
 ostream& operator <<(ostream& out, const String& s){
