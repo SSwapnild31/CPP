@@ -97,6 +97,7 @@ public:
 	friend void Strlower(String&);
 	friend istream& operator >>(istream&, String&);
 	friend ostream& operator <<(ostream&, const String&);
+	friend void Strcat(String&, String&);
 };
 
 ostream& operator <<(ostream& out, const String& s){
