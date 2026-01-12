@@ -36,6 +36,9 @@ public:
 		return temp;
 	}
 	
+	bool operator == (const String& s) const {
+		return strcmp(s.ptr,ptr) == 0;
+	}
 	
 	~String(){
 		delete[] ptr;
