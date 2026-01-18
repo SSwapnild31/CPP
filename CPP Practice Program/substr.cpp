@@ -7,14 +7,14 @@ public:
 	bool substr(string &m, string &s){
 		
 		for(int i=0; i<m.size();i++){
-			if(m[0] == s[0]){
+			if(m[i] == s[0]){
 				int j;
 				for(j=1;j<s.size();j++){
 					if(m[i+j]!=s[j]){
 						break;
 					}
 				}
-				if(s[j]=='\0'){
+				if(j==s.size()){
 					return true;
 				}
 			}
