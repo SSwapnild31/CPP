@@ -5,7 +5,7 @@ int main()
 {
 	int *p,i;
 	p=new int[5];
-	
+	cout <<"enter arr ele"<< endl ;
 	for(i=0;i<5;i++)
 		cin >> p[i];
 	
