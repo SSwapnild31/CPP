@@ -2,7 +2,7 @@
 #include<algorithm>
 #include<vector>
 #include<climits>
-
+#include<cstdlib>
 using namespace std;
 
 class Data
@@ -10,6 +10,10 @@ class Data
 public:
 	int twoSum(vector<int> &nums){
 		
+		if(nums.size() < 2){
+			cout <<"Not enough elements"<< endl;
+			return 0;
+		}
 		sort(nums.begin(), nums.end());
 		
 		int left = 0;
