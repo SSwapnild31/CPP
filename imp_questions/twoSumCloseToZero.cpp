@@ -1,13 +1,36 @@
 #include<iostream>
+#include<algorithm>
 #include<vector>
+#include<climits>
+
 using namespace std;
 
 class Data
 {
 public:
-	int twoSum(vector<int> &nums, int n){
-	
-		return 0;
+	int twoSum(vector<int> &nums){
+		
+		sort(nums.begin(), nums.end());
+		
+		int left = 0;
+		int right = nums.size() - 1;
+		int minSum = INT_MAX;
+		
+		while(left < right){
+			int currentSum = nums[left] + nums[right];
+			
+			if(abs(currentSum) < abs(minSum)){
+				minSum = currentSum; 
+			}
+
+			if(currentSum < 0){
+				left++;
+			}else{
+				right--;
+			}
+		}
+		
+		return minSum;
 	}
 };
 
@@ -25,7 +48,9 @@ int main()
 		cin >> temp;
 		v.push_back(temp);
 	}
-	
+	Data d;
+	cout <<"sum closest to zero : "<< d.twoSum(v) << endl;
+
 	/*for(int &i : v){
 		cout << i <<" ";
 	}
