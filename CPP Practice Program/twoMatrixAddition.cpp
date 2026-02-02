@@ -30,7 +30,19 @@ public :
 	
 	matrix& operator = (const matrix &m){
 		
+		for(int i=0; i<rows; i++){
+			delete[] mat[i];
+		}
+		delete[] mat;
 
+		mat = new T*[rows];
+		for(int i=0; i<rows; i++){
+			mat[i] = new T[cols];
+			for(int j=0; j<cols; j++){
+				mat[i][j] = m.mat[i][j];
+			}
+		}
+		
 		return *this;
 	}
 
@@ -92,6 +104,7 @@ int main()
 	matrix<int> m3(r,c);
 	
 	m3 = m1 + m2;
+	cout <<"matrix result ";
 	m3.getData();
 
 	return 0;
