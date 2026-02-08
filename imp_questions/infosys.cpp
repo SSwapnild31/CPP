@@ -1,17 +1,17 @@
 #include<iostream>
 using namespace std;
 
-int func(int &a, int n){
+int func(int a[], int n){
 	
 	int freq[256] = {0};
 	int count = 0, lst_freq = 0;
 
 	for(int i=0; i<n; i++){
-		freq[(unsigned int)a[i]]++;
+		freq[a[i]]++;
 
-		if(freq[(unsigned int)a[i]] != lst_freq){
+		if(freq[a[i]] != lst_freq){
 			count++;
-			lst_freq = freq[(unsigned int)a[i]];
+			lst_freq = freq[a[i]];
 		}
 	}
 	return count;
@@ -29,7 +29,7 @@ int main()
 		cin >> a[i];
 	}
 	
-	cout <<" "<< func(a,n) << endl;
+	cout << func(a,n) << endl;
 
 	return 0;
 }
