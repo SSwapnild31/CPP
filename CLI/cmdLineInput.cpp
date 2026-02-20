@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 	
-	cout <<"Done"<< endl;
+	cout <<"argv[1] : "<< argv[1] << endl;
 	
 	return 0;
 }
