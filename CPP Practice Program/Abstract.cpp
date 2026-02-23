@@ -1,8 +1,7 @@
 #include<iostream>
 using namespace std;
 
-class Shape
-{
+class Shape {
 	protected :
 		float dimention;
 	public :
@@ -44,3 +43,4 @@ int main()
 	c.getDimention();
 	cout<<"Area of circle :  "<<c.calculateArea()<<endl;
 }
+
