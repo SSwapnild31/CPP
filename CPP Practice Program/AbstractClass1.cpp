@@ -1,14 +1,12 @@
 #include<iostream>
 using namespace std;
 
-class Base
-{
+class Base {
 	public :
 		virtual void show()=0; //Pure virtual function
 };
 
-class Derived : public Base
-{
+class Derived : public Base {
 	public :
 		void show()
 		{
@@ -24,3 +22,4 @@ int main()
 	b->show();
 	return 0;
 }
+
