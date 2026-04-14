@@ -3,12 +3,13 @@
 
 struct stud_info{
 	int roll_no;
-	char name[];
+	char name[50];
 	float marks;
 };
 
 class student
 {
+	stud_info table;
 public:
 	void set_data();
 	void get_data();
@@ -17,11 +18,12 @@ public:
 };
 
 void student::set_data(){
-	stud_info table;
-	
+
 	std::cout <<"Enter Name : ";
 	std::cin >> table.name;
 	
+	std::cin.ignore();
+
 	std::cout <<"Enter Roll_no : ";
 	std::cin >> table.roll_no;
 	
@@ -31,9 +33,9 @@ void student::set_data(){
 
 void student::get_data(){
 
-	std::cout <<"Name	: "<< name;
-	std::cout <<"Roll_no 	: "<< roll_no;
-	std::cout <<"Marks 	: "<< marks;
+	std::cout <<"Name	: "<< table.name << std::endl;
+	std::cout <<"Roll_no : "<< table.roll_no << std::endl;
+	std::cout <<"Marks 	: "<< table.marks << std::endl;
 }
 
 int main(int argc, char *fname[])
@@ -45,5 +47,6 @@ int main(int argc, char *fname[])
 	st.set_data();
 	st.get_data();
 	
+	fio.close();
 	return 0;
 }
