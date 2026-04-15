@@ -15,6 +15,7 @@ public:
 	void get_data();
 	void write_data();
 	void read_data();
+	int count_stud();
 };
 
 void student::set_data(){
