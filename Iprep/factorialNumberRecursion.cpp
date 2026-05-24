@@ -1,7 +1,7 @@
-#include<iostream>
-using namespace std;
+#include <iostream>
 
 int factNumber(int num){
+	
 	if(num == 0 || num == 1)
 		return 1;
 	return num * factNumber(num - 1);
@@ -10,10 +10,8 @@ int factNumber(int num){
 int main()
 {
 	int num;
-	cout <<"Enter number : ";
-	cin >> num;
+	std::cout <<"Enter number : ";
+	std::cin >> num;
 	
-	cout << factNumber(num) << endl;
-	
-	return 0;
+	std::cout << factNumber(num) << std::endl;
 }
